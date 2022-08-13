@@ -1,0 +1,109 @@
+/* ********** */
+/* COLUMN CENTER CSS */
+/* ********** */
+
+.col.top{
+    display: flex;
+    flex-direction: column;
+}
+
+.col.top h1{
+    font-weight: bold;
+}
+
+.col.top ul{
+    display: flex;
+    margin: 10px 0;
+}
+
+.col.top ul li{
+    font-size: 11px;
+    background-color: #323232;
+    font-weight: bold;
+    color: #f4f4f4;
+    margin-right: 10px;
+    padding: 2px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 1px 0 5px rgba(0,0,0,0.1);
+}
+
+.col.top ul li:hover{
+    background-color: #fff;
+    color: #FB9935;
+}
+
+.col.top ul li.active{
+    background-color: #fff;
+    color: #FB9935;
+}
+
+.col.middle{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.col.middle .card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #323232;
+    background-color: #fff;
+    height: 150px;
+    width: 18vw;
+    margin-top: 20px;
+    margin-right: 12px;
+    border-radius: 25px;
+    border: 1px solid #d2d2d2;
+    box-shadow: 1px 0 5px rgba(0,0,0,0.1);
+}
+
+.col.middle .card span.headers{
+    padding-bottom: 8px;
+    border-bottom: 0.8px solid rgba(0,0,0,0.1);
+}
+
+.col.middle .card span{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    padding: 3px 0;
+}
+
+.card span h4{
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.card:hover{
+    background-color: #fff;
+}
+
+.standby{
+    background-color: rgba(13, 255, 0, 0.201);
+}
+
+.onCall{
+    background-color: rgba(3, 63, 200, 0.201);
+}
+
+.away{
+    background-color: rgba(255, 191, 0, 0.201);
+}
+
+.row.center .col.bottom{
+    width: 55vw;
+    height: fit-content;
+}
+
+canvas{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 1px 0 5px rgba(0,0,0,0.1);
+    margin: 10px 5px;
+}

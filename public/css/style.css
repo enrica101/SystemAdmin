@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto+Condensed:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+@import './dashboardCenter.css';
+@import './dashboardRight.css';
+@import './forms.css';
+
+
+body{
+    position: relative;
+    background-color:#f4f4f4;
+    font-family: 'Source Sans Pro', 'sans-serif';
+    margin: 0;
+    overflow-x: hidden;
+}
+
+
+.row.left{
+    position: fixed;
+    background-color: #323232;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 15vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.3);
+}
+
+.row.center{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 61vw;
+    height: 100vh;
+    top: 0;
+    left: 15vw;
+    margin: 20px;
+}
+
+.row.right{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 24vw;
+    height: 100vh;
+    right: 0;
+    margin: 5px;
+}
+
+/* ********** */
+/* SIDENAV / COLUMN LEFT CSS */
+/* ********** */
+
+.topnav{
+    height: 70%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+.row.left img{
+    width: 120px;
+    margin-left: 20px;
+}
+
+.row.left ul{
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    
+}
+
+.row.left ul li{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+}
+
+.row.left ul li form{
+    display: flex;
+    align-items: flex-start;
+}
+
+.row.left ul a,
+.row.left ul button{
+    color: #f4f4f4;
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 16px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.row.left ul button{
+    border: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.row.left ul li button:focus{
+    outline: none;
+}
+
+.row.left ul a:hover,
+.row.left ul li:hover{
+    background-color: #494949;
+    border-left: 2px solid #f4f4f4;
+}
+
+.row.left ul a i,
+.row.left ul li i{
+    padding-right: 10px;
+}
+
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    padding: 0;
+}
+
+.btn{
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    height: 34px;
+    cursor: pointer;
+}
+
+.btn-pdf{
+    margin: 0 15px 30px;
+}
+
+.btn-pdf:hover{
+    background-color: #FB9935;
+    color: #000;
+}
+
+
+
+
+
+

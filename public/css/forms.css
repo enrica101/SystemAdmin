@@ -1,0 +1,101 @@
+
+/* ************************* */
+/* LOGIN & REGISTER CSS */
+/* ************************* */
+.container.login, 
+.container.register{
+    background-color: #323232;
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+}
+
+.default-login, 
+.default-register{
+    background-color: #fafafa;
+    padding: 40px;
+    width: 400px;
+    height: fit-content;
+    border-radius: 10px;
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.4);
+
+}
+
+.default-login span, 
+.default-register span{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.default-login span img, 
+.default-register span img{
+    width: 108px;
+    padding: 5px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+form .field-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+form .field-area label{
+    padding: 0;
+    margin-bottom: 4px;
+}
+
+form input{
+    height: 28px;
+    width: 250px;
+    border-radius: 10px;
+    border: 1px solid #545454;
+    padding: 0 10px;
+}
+
+form input[type=submit]{
+    background-color: #FB9935;
+    color: #323232;
+    font-family: 'Poppins', 'sans-serif';
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+form input[type=submit]:hover{
+    background-color: #eee;
+    color: #323232;
+
+}
+
+
+/* *********** */
+/* MOBILE CSS */
+/* *********** */
+
+@media screen and (max-width: 600px) {
+    .default-login,
+    .default-register{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+  }
