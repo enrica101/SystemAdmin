@@ -14,6 +14,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::get('/', function(){
+    return view('users.login');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware('auth');
@@ -31,7 +35,7 @@ Route::post('/users', [UserController::class, 'store']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 // Show Login Form
-Route::get('login', [UserController::class, 'login'])->name('login')->middleware('guest');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
 //Login User
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
