@@ -27,4 +27,3 @@ class AuthController extends Controller
         return response()->json($coords, 201);
     }
 }
-// ->json($request, 201)
