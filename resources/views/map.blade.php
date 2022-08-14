@@ -39,9 +39,16 @@
             position: coordinates,
             map: map,
             icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          
             
             });
+                var infoWindow = new google.maps.InfoWindow({
+                    content: '<h4>Request Type: Fire</h4><h5>Status: On Going</h5><h5>Responder Name: Juan L.</h5>'
+                });
 
+                marker.addListener('click', function(){
+                    infoWindow.open(map,marker);
+                });
             // // Check for custom icon
             // if(props.iconImage){
             //     marker.setIcon(props.iconImage);
