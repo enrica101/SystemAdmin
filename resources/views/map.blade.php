@@ -21,11 +21,9 @@
         function geo(){
         axios.get('/api/requests')
             .then( res => {
-                console.log(res.data)
                 res.data.forEach(location => {
                     var lat = parseFloat(location['lat'])
                     var lng = parseFloat(location['lng'])
-                    console.log(location)
                     
                     console.log({lat: lat, lng: lng})
                     addMarker({lat: lat, lng: lng});
