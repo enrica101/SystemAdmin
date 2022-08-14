@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function allCcoordinates(){
         $coords = Dispatch::all();
 
-        return response()->json($coords, 200);
+        return response()->json($coords, 201);
     }
 
     public function storeCoordinates(Request $request){
