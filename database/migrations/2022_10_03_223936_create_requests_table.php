@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('requests', function (Blueprint $table) {
-            $table->id();
+            $table->id('requestID');
+            $table->string('requestType');
             $table->string('lat');
             $table->string('lng');
-            $table->timestamps();
         });
     }
 

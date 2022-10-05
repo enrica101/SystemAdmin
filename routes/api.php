@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ResponderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,10 @@ use App\Http\Controllers\AuthController;
 
 Route::post('/requests', [AuthController::class, 'storeCoordinates']);
 Route::get('/requests', [AuthController::class, 'allCcoordinates']);
-
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('responder/register/id', [ResponderController::class, 'createResponder']);
+Route::post('/login', [AuthController::class, 'login']);
+    
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

@@ -19,10 +19,18 @@ class User extends Authenticatable
      */
     protected $table = 'users';
     protected $fillable = [
-        'firstName',
-        'lastName',
+        // 'userID',
+        // 'uuid',
+        'accountType',
         'email',
         'password',
+        'fname',
+        'mname',
+        'lname',
+        'gender',
+        'birthdate',
+        'contactNumber',
+        'avatar',
     ];
 
     /**
@@ -43,4 +51,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function requestDispatch(){
+        return $this->hasMany(RequestDispatch::class, 'userID');
+        
+    }
+
+    public function responders(){
+        return $this->hasMany(Responder::class, 'userID');
+        
+    }
 }

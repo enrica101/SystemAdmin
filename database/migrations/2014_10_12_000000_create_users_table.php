@@ -14,12 +14,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('firstName');
-            $table->string('lastName');
+           $table->id('userID');
+        //    $table->string('uuid')->unique()->nullable(); //stands for unique user id
+            $table->string('accountType'); //user,responder,admin
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('fname');
+            $table->string('mname')->nullable();
+            $table->string('lname');
+            $table->string('gender');
+            $table->date('birthdate');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('contactNumber', 13)->nullable();
+            $table->string('avatar')->nullable(); //if user did not upload an image, set image to deafult img
             $table->rememberToken();
             $table->timestamps();
         });

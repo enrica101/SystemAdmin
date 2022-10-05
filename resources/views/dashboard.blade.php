@@ -78,10 +78,10 @@
         <span class="icon icon-bell"><i class="fa-solid fa-bell"></i><span class="dot dot-notif"></span></span>
         <div class="avatar">
             <span>
-            <small>Hey, {{auth()->user()->firstName}}</small>
-            <small>Admin</small>
+            <small>Hey,</small>
+            <small> {{auth()->user()->fname}}</small>
             </span>
-            <img src="img/avatar.png" alt="avatar">
+            <img src="{{auth()->user()->avatar ? asset('storage/'. auth()->user()->avatar) : asset('img/avatar.png')}}" alt="avatar">
         </div>
         
     </div>
