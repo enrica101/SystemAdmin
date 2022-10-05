@@ -43,7 +43,7 @@ class RequestsController extends Controller
                 'status' => 'nullable',
             ]));
 
-            $requestDispatchFields['requestID'] = $requestDetails->max('requestID');
+            $requestDispatchFields['requestID'] = $requestDetails->max('id');
             // dd($requestDispatchFields['requestID']);
             $requestDispatchDetails = RequestDispatch::create($requestDispatchFields);
 
