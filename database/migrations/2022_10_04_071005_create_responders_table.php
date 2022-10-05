@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('responders', function (Blueprint $table) {
-            $table->id('responderID');
-            $table->foreignId('userID')->references('userID')->on('users');
+            $table->id();
+            $table->foreignId('userID')->references('id')->on('users');
             $table->string('field');
             $table->string('lat');
             $table->string('lng');

@@ -14,6 +14,7 @@ class Requests extends Model
         'requestType',
         'lat',
         'lng',
+        'status',
     ];
 
     public function requestDispatch(){

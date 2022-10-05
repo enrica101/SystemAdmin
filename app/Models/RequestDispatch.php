@@ -18,15 +18,14 @@ class RequestDispatch extends Model
     protected $fillable = [
         'requestID',
         'userID',
-        'status',
         // include timestamp "created date"
     ];
 
     public function users(){
-        return $this->belongsTo(User::class, 'userID');
+        return $this->belongsTo(User::class, 'id');
     }
 
     public function requests(){
-        return $this->belongsTo(Requests::class, 'requestID');
+        return $this->belongsTo(Requests::class, 'id');
     }
 }

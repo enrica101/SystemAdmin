@@ -17,10 +17,10 @@ class Responder extends Model
     ];
 
     public function users(){
-        return $this->hasMany(User::class, 'userID');
+        return $this->hasMany(User::class, 'id');
     }
 
     public function responses(){
-        return $this->hasMany(Response::class, 'responderID');
+        return $this->hasMany(Response::class, 'id');
     }
 }

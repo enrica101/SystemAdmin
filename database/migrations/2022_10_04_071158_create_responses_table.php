@@ -14,9 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('responses', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('requestID')->references('requestID')->on('requests');
-            $table->foreignId('responderID')->references('responderID')->on('responders');
+            $table->foreignId('requestID')->references('id')->on('requests');
+            $table->foreignId('responderID')->references('id')->on('responders');
             $table->string('status');
             $table->timestamps();
         });

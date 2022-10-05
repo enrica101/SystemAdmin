@@ -9,7 +9,7 @@
 <script>
     function initMap(){
         var options = {
-            zoom: 14,
+            zoom: 13,
             center: {lat: 10.315724, lng:123.885419}
         }
         var map =  new google.maps.Map(document.getElementById('map'), options);
@@ -18,18 +18,21 @@
         function geo(){
         axios.get('/api/requests')
             .then( res => {
-                res.data.forEach(location => {
+                console.log(res);
+                res.data.requests.forEach(location => {
+                    var requestType = location['requestType']
+                    var status = location['status']
                     var lat = parseFloat(location['lat'])
                     var lng = parseFloat(location['lng'])
-                    
-                    console.log({lat: lat, lng: lng})
-                    addMarker({lat: lat, lng: lng});
+                    console.log(res.data.requests);
+
+                    addMarker({lat: lat, lng: lng}, requestType, status);
                     
                 });
             }).catch(err => console.log(err));
         }
 
-        function addMarker(coordinates){
+        function addMarker(coordinates, type, status){
             var marker = new google.maps.Marker({
             position: coordinates,
             map: map,
@@ -38,7 +41,7 @@
             
             });
                 var infoWindow = new google.maps.InfoWindow({
-                    content: '<h4>Request Type: Fire</h4><h5>Status: On Going</h5><h5>Responder Name: Juan L.</h5>'
+                    content: '<h4>Request Type: '+ type +'</h4><h5>Status: '+ status +'</h5><h5>Responder Name: Juan L.</h5>'
                 });
 
                 marker.addListener('click', function(){
