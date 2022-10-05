@@ -32,6 +32,7 @@ class RequestsController extends Controller
                 'requestType' => 'required',
                 'lat' => 'required',
                 'lng' => 'required',
+                'status' => 'nullable',
             ]);
 
             $requestDetails = Requests::create($formFields);
@@ -40,7 +41,6 @@ class RequestsController extends Controller
             $requestDispatchFields = $request->validate(([
                 // 'requestID' => 'required',
                 'userID' => 'required',
-                'status' => 'nullable',
             ]));
 
             $requestDispatchFields['requestID'] = $requestDetails->max('id');
