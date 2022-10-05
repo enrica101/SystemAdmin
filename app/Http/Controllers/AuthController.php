@@ -64,7 +64,7 @@ class AuthController extends Controller
                     'lng'  => 'required',
                 ]);
 
-            $responderInputs['userID'] = $user->max('userID');
+            $responderInputs['userID'] = $user->max('id');
 
             $responder = Responder::create($responderInputs);
             }else{
