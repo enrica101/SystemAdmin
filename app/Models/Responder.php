@@ -10,7 +10,6 @@ class Responder extends Model
     use HasFactory;
     protected $table = 'responders';
     protected $fillable = [
-        // 'responderID',
         'userID',
         'field',
         'lat',

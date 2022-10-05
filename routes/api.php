@@ -21,7 +21,6 @@ use App\Http\Controllers\ResponderController;
 Route::post('/requests', [AuthController::class, 'storeCoordinates']);
 Route::get('/requests', [AuthController::class, 'allCcoordinates']);
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('responder/register/id', [ResponderController::class, 'createResponder']);
 Route::post('/login', [AuthController::class, 'login']);
     
 

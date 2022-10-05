@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Carbon\Traits\Date;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Auth\Events\Logout;
@@ -17,9 +16,7 @@ class UserController extends Controller
 
     // Create New User
     public function store(Request $request, ){
-
         $formInputs = $request->validate([ 
-            // 'uuid' => 'nullable',
             'accountType' => ['required'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'confirmed', 'min:6'],
@@ -40,13 +37,11 @@ class UserController extends Controller
         
         // Create User
         $user = User::create($formInputs);
-        // Login
-        auth()->login($user, true); 
-        // $formInputs['uuid'] = Controller::generateID(auth()->user()->accountType, auth()->id());
 
-        // $user->update($formInputs);
+        // Login
+        auth()->login($user); 
         
-        return redirect('dashboard');
+        return redirect('/dashboard');
     }
 
     // Logout

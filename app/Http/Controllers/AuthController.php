@@ -55,8 +55,6 @@ class AuthController extends Controller
                 }
 
             $user = User::create($formInputs);
-            // $formInputs['uuid'] = Controller::generateID($user->accountType, $user->max('userID'));
-            // $user->update($formInputs);
 
             if($request['accountType'] == 'Responder'){
                 $responderInputs = $request->validate([
@@ -74,10 +72,7 @@ class AuthController extends Controller
             }
             
             $token = $user->createToken('myapptoken')->plainTextToken;
-            $response = [
-                'user' => $user,
-                'token' => $token
-            ];
+            
 
             if(!empty($responder)){
                 $response = [
@@ -85,6 +80,11 @@ class AuthController extends Controller
                     'responder' => $responder,
                     'token' => $token
                 ];
+            }else{
+                $response = [
+                'user' => $user,
+                'token' => $token
+            ];
             }
 
             return response()->json($response,201); // 201 Created
@@ -121,30 +121,6 @@ class AuthController extends Controller
             ];
 
             return response($response, 201);
-        }
-
-        public function createResponder(Request $request, User $user){
-            $formInputs = $request->validate([
-                'field' => 'required',
-                'lat' => 'required',
-                'lng' => 'required',
-                
-            ]);
-
-
-            $responder = Responder::create($formInputs);
-            $formInputs['uuid'] = Controller::generateID(auth()->user()->accountType, auth()->id());
-
-            $user->update($formInputs);
-            
-            $token = $user->createToken('myapptoken')->plainTextToken;
-            $response = [
-                'user' => $user,
-                'token' => $token
-            ];
-
-            return response()->json($response,201); // 201 Created
-
         }
     
 }
