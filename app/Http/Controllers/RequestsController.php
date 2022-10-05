@@ -26,26 +26,26 @@ class RequestsController extends Controller
     public function createDispatchRequest(Request $request){
         //Requests should have userID, request status (searching responder, responder otw, arrived at request site, to destination, complete)
 
-        // dd($request);
+        // dd($request);    
         //insertion for 'requests' table
-            $formFields = $request->validate([
-                'requestType' => 'required',
-                'lat' => 'required',
-                'lng' => 'required',
-                'status' => 'nullable',
-            ]);
-
-            $requestDetails = Requests::create($formFields);
-
+        $formFields = $request->validate([
+            'requestType' => 'required',
+            'lat' => 'required',
+            'lng' => 'required',
+            'status' => 'nullable',
+        ]);
+        $requestDetails = Requests::create($formFields);
+        
         //Insertion for 'request_dispatch' table with foreign key 'userID'
-            $requestDispatchFields = $request->validate(([
-                // 'requestID' => 'required',
-                'userID' => 'required',
-            ]));
-
-            $requestDispatchFields['requestID'] = $requestDetails->max('id');
-            // dd($requestDispatchFields['requestID']);
-            $requestDispatchDetails = RequestDispatch::create($requestDispatchFields);
+        $requestDispatchFields = $request->validate(([
+            // 'requestID' => 'required',
+            'userID' => 'required',
+        ]));
+        
+        $requestDispatchFields['requestID'] = $requestDetails->max('id');
+        // dd($requestDispatchFields['requestID']);
+        $requestDispatchDetails = RequestDispatch::create($requestDispatchFields);
+        dd($requestDispatchDetails);
 
             $response = [
                 'requestDetails' => $requestDetails,

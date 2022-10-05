@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('request_dispatch', function (Blueprint $table) {
-            // $table->id();
+            $table->id();
             $table->foreignId('requestID')->references('id')->on('requests');
             $table->foreignId('userID')->references('id')->on('users');
             $table->timestamps();
