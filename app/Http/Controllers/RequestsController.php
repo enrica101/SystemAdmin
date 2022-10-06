@@ -15,18 +15,15 @@ class RequestsController extends Controller
         $results = [
             'requests' => $requests,
             'dipatched_requests' => $dispatched_requests,
-
         ];
 
         return response()->json($results, 201);
     }
 
-
     // Create and store dispatch requests
     public function createDispatchRequest(Request $request){
         //Requests should have userID, request status (searching responder, responder otw, arrived at request site, to destination, complete)
-
-        // dd($request);    
+   
         //insertion for 'requests' table
         $formFields = $request->validate([
             'requestType' => 'required',
@@ -38,14 +35,12 @@ class RequestsController extends Controller
         
         //Insertion for 'request_dispatch' table with foreign key 'userID'
         $requestDispatchFields = $request->validate(([
-            // 'requestID' => 'required',
             'userID' => 'required',
         ]));
         
         $requestDispatchFields['requestID'] = $requestDetails->max('id');
-        // dd($requestDispatchFields['requestID']);
+        
         $requestDispatchDetails = RequestDispatch::create($requestDispatchFields);
-        dd($requestDispatchDetails);
 
             $response = [
                 'requestDetails' => $requestDetails,

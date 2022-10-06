@@ -33,6 +33,8 @@ class AuthController extends Controller
 
         // Create New User
         public function register(Request $request){
+            
+            print_r(gettype($request['birthdate']));
             $formInputs = $request->validate([
                 'accountType' => ['required'],
                 'email' => ['required', 'email', Rule::unique('users', 'email')],
@@ -53,7 +55,7 @@ class AuthController extends Controller
             if($request->hasFile('avatar')){
                     $formInputs['avatar'] = $request->file('avatar')->store('avatars', 'public');
                 }
-
+        
             $user = User::create($formInputs);
 
             if($request['accountType'] == 'Responder'){
@@ -72,8 +74,7 @@ class AuthController extends Controller
             }
             
             $token = $user->createToken('myapptoken')->plainTextToken;
-            
-
+        
             if(!empty($responder)){
                 $response = [
                     'user' => $user,
@@ -82,11 +83,10 @@ class AuthController extends Controller
                 ];
             }else{
                 $response = [
-                'user' => $user,
-                'token' => $token
-            ];
+                    'user' => $user,
+                    'token' => $token
+                ];
             }
-
             return response()->json($response,201); // 201 Created
         }
 

@@ -37,7 +37,6 @@
             position: coordinates,
             map: map,
             icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-          
             
             });
                 var infoWindow = new google.maps.InfoWindow({
