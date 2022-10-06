@@ -20,8 +20,7 @@
                 <img src="img/default-img-dark.png" alt="">
                 <h3>Register for an Admin Account</h3>
             </span>
-            {{-- <form method="POST" action="/users" enctype="multipart/form-data"> --}}
-                <form method="POST" action="/users">
+            <form method="POST" action="/users" enctype="multipart/form-data">
                 @csrf
                 <div class="field">
                     <label for="accountType">Account Type*</label>
@@ -92,7 +91,7 @@
                     @enderror
                 </div>
                 
-                {{-- <div class="field">
+                <div class="field">
                     <label for="avatar">
                         Upload Profile Picture <small>[Optional]</small>
                     </label><br>
@@ -100,11 +99,11 @@
                         type="file" 
                         name="avatar" 
                         {{-- accept="image/*" --}}
-                    {{-- /><br>
+                    /><br>
                     @error('avatar')
                     <p>{{$message}}</p>
                     @enderror
-                </div> --}}
+                </div>
                 <input type="submit" value="Register"><br>
                 <small>Already have an account? <a href="/login">Login </a></small>
             </form>
