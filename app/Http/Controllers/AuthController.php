@@ -64,12 +64,12 @@ class AuthController extends Controller
                     'lat'  => 'required', //upon removal
                     'lng'  => 'required',//upon removal
                 ]);  
-            } 
+         
 
             $responderInputs['userID'] = $user->max('id');
 
             $responder = Responder::create($responderInputs);
-            
+            } 
             $token = $user->createToken('myapptoken')->plainTextToken;
         
             if(!empty($responder)){
