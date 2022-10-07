@@ -59,10 +59,10 @@ class AuthController extends Controller
 
             if($request['accountType'] == 'Responder'){
                 $responderInputs = $request->validate([
-                    'userID'  => 'nullable',
+                    'userID'  => 'nullable', 
                     'field'  => 'required',
-                    'lat'  => 'required',
-                    'lng'  => 'required',
+                    'lat'  => 'required', //upon removal
+                    'lng'  => 'required',//upon removal
                 ]);
 
             $responderInputs['userID'] = $user->max('id');
@@ -85,6 +85,7 @@ class AuthController extends Controller
             // }
             return response($response,201); // 201 Created
         }
+    }
 
          // Authenticate User
         public function login(Request $request){
