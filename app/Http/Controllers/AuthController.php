@@ -63,7 +63,8 @@ class AuthController extends Controller
                     'field'  => 'required',
                     'lat'  => 'required', //upon removal
                     'lng'  => 'required',//upon removal
-                ]);
+                ]);  
+            } 
 
             $responderInputs['userID'] = $user->max('id');
 
@@ -84,7 +85,8 @@ class AuthController extends Controller
                 ];
             }
            
-    } return response($response,201); // 201 Created
+  
+    return response($response,201); // 201 Created
 }
 
          // Authenticate User
