@@ -86,6 +86,7 @@ class AuthController extends Controller
             return response($response,201); // 201 Created
         }
     }
+}
 
          // Authenticate User
         public function login(Request $request){
