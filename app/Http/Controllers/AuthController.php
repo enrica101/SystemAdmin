@@ -34,7 +34,6 @@ class AuthController extends Controller
         // Create New User
         public function register(Request $request){
             
-            print_r(gettype($request['birthdate']));
             $formInputs = $request->validate([
                 'accountType' => ['required'],
                 'email' => ['required', 'email', Rule::unique('users', 'email')],
@@ -69,9 +68,6 @@ class AuthController extends Controller
             $responderInputs['userID'] = $user->max('id');
 
             $responder = Responder::create($responderInputs);
-            }else{
-                $responder='';
-            }
             
             $token = $user->createToken('myapptoken')->plainTextToken;
         
@@ -86,7 +82,7 @@ class AuthController extends Controller
                     'user' => $user,
                     'token' => $token
                 ];
-            }
+            // }
             return response($response,201); // 201 Created
         }
 
