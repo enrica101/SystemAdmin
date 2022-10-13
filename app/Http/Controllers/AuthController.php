@@ -61,7 +61,7 @@ class AuthController extends Controller
                 $responderInputs = $request->validate([
                     'userID'  => 'nullable', 
                     'field'  => 'required',
-                    'lat'  => 'required', //upon removal
+                    'lat'  => 'required', //upon remova
                     'lng'  => 'required',//upon removal
                 ]);  
          

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('userID')->references('id')->on('users');
             $table->string('field');
-            $table->string('lat');
-            $table->string('lng');
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
             $table->timestamps();
         });
     }
