@@ -185,8 +185,6 @@
         
         geo()
         function geo(){
-            // trigger == all gets all types of requests
-            //  trigger == Fire only displays fire requests
             axios.get('/api/requests')
             .then( res => {
                 console.log(res);
