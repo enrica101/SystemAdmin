@@ -12,24 +12,24 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function allRequests(){
-        $coords = Requests::all();
+    // public function allRequests(){
+    //     $coords = Requests::all();
 
-        return response()->json($coords, 201);
-    }
+    //     return response()->json($coords, 201);
+    // }
 
-    public function storeRequest(Request $request){
+    // public function storeRequest(Request $request){
         
-        $fields = $request->validate([
-            'requestType' => 'required',
-            'lat' => 'required',
-            'lng'=> 'required',
-        ]);
+    //     $fields = $request->validate([
+    //         'requestType' => 'required',
+    //         'lat' => 'required',
+    //         'lng'=> 'required',
+    //     ]);
 
-        $requestDetails = Requests::create($fields);
+    //     $requestDetails = Requests::create($fields);
 
-        return response()->json($requestDetails, 201);
-    }
+    //     return response()->json($requestDetails, 201);
+    // }
 
         // Create New User
         public function register(Request $request){
@@ -70,12 +70,9 @@ class AuthController extends Controller
                     'lng'  => 'required',//upon removal
                 ]);  
          
-
             $responderInputs['userID'] = $user->max('id');
-
             $responder = Responder::create($responderInputs);
             } 
-            
         
             if(!empty($responder)){
                 $response = [
@@ -90,10 +87,8 @@ class AuthController extends Controller
                 ];
             }
            
-  
     return response($response,201); // 201 Created
 }
-
          // Authenticate User
         public function login(Request $request){
             $formInputs = $request->validate([

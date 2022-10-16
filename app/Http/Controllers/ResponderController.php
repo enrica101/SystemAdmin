@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Requests;
 use App\Models\Response;
 use App\Models\Responder;
 use Illuminate\Http\Request;
+use App\Models\RequestDispatch;
+use App\Models\Requests;
 
 class ResponderController extends Controller
 {
@@ -53,7 +54,7 @@ class ResponderController extends Controller
             'responderID' => 'required',
             'status' => 'required',
         ]);
-        $formInputs['status'] = 'Responder Found';
+        // $formInputs['status'] = 'Responder Found';
         $responder = Responder::where('id', $formInputs['responderID'])->first();
         $requestDispatch = Requests::where('id', $formInputs['requestID'])->first();
         //  == $requestDispatch->get('requestType')

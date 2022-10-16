@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RequestDispatch;
+use App\Models\User;
 use App\Models\Requests;
 use Illuminate\Http\Request;
+use App\Models\RequestDispatch;
 
 class RequestsController extends Controller
 {
@@ -29,7 +30,7 @@ class RequestsController extends Controller
             'requestType' => 'required',
             'lat' => 'required',
             'lng' => 'required',
-            'status' => 'nullable',
+            'status' => 'required',
         ]);
         $requestDetails = Requests::create($formFields);
         
@@ -48,5 +49,38 @@ class RequestsController extends Controller
             ];
 
             return response()->json($response, 201);
+    }
+
+    public function updateRequest(Request $request){
+        $accountInputs = $request->validate([
+            'userID'=> 'required',
+            'requestID'=> 'required',
+        ]);
+
+        $formFields = $request->validate([
+            'lat' => 'required',
+            'lng' => 'required',
+            'status' => 'required',
+        ]);
+
+        $requester = RequestDispatch::where('requestID', $accountInputs['requestID'])->where('userID', $accountInputs['userID'])->first();
+
+        if($requester==[]){
+            return response([
+                'message' => 'Incorrect Inputs'
+            ], 404);
+        }else{
+            $user = User::where('id', $requester->userID)->first();
+            $requestDispatch = Requests::where('id', $requester->requestID)->first();
+            $requestDispatch->update($formFields);
+
+            $response = [
+                'user' => $user->id,
+                'requestDispatch' => $requestDispatch
+            ];
+
+            return response($response, 200);
+        }
+        
     }
 }
