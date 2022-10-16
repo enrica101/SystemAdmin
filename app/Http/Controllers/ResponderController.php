@@ -27,15 +27,22 @@ class ResponderController extends Controller
     //     return $responder; // 201 Created
     // }
 
-    // public function updateLocation(Request $request, Responder $responder){
-    //     $locationInputs = $request->validate([
-    //         'id'=> 'required',
-    //         'lat' => 'required',
-    //         'lng' => 'required',
-    //     ]);
+    public function updateLocation(Request $request){
+        
+        $accountInputs = $request->validate([
+            'id'=> 'required',
+        ]);
+
+        $locationInputs = $request->validate([
+            'lat' => 'required',
+            'lng' => 'required',
+        ]);
+
+        $responder = Responder::where('id', $accountInputs['id']);
+        $responder->update($locationInputs);
+    
+        return response($responder->get(), 200);
 
         
-
-        
-    // }
+    }
 }
