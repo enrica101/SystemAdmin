@@ -83,6 +83,14 @@
             </span>
             <img src="{{auth()->user()->avatar ? asset('storage/'. auth()->user()->avatar) : asset('img/avatar.png')}}" alt="avatar">
         </div>
+
+        {{-- PROFILE AREA --}}
+        <div class="profile">
+            <img style="width:50px;margin:auto;" src="{{auth()->user()->avatar ? asset('storage/'. auth()->user()->avatar) : asset('img/avatar.png')}}" alt="avatar"><br>
+            <h4>{{auth()->user()->fname}} {{auth()->user()->lname}}</h4>
+            <h5 style="font-weight: 400;">{{auth()->user()->email}}</h5><br>
+            <a href="user/{{auth()->user()->id}}/settings" style="font-weight: 400; font-size:12px; color:blue;">Update your info</a>
+        </div>
         
     </div>
     <div class="emergency">
@@ -209,7 +217,13 @@
 <script>
     const iconBell = document.querySelector('.icon-bell')
     const notifBox = document.querySelector('.notif')
+    const profileTrigger = document.querySelector('.avatar')
+    const profileInterface = document.querySelector('.profile')
 
+    profileTrigger.addEventListener("click", () => {
+        profileInterface.classList.toggle('active')
+        // console.log(profileInterface.className)
+    })
 
     iconBell.addEventListener('click', ()=>{
         notifBox.classList.toggle('active')

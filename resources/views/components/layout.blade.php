@@ -11,8 +11,8 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
     <title>System Dashboard</title>
 </head>
 <body>
@@ -25,7 +25,7 @@
                 <a href="/map"><li><i class="fa-solid fa-map"></i> Map</li></a>
                 <a href="#"><li><i class="fa-solid fa-user-group"></i> Responders</li></a>
                 <a href="#"><li><i class="fa-solid fa-circle-exclamation"></i> Emergencies</li></a>
-                <a href="#"><li><i class="fa-solid fa-gear"></i> Settings</li></a>
+                <a href="user/{{auth()->id()}}/settings"><li><i class="fa-solid fa-gear"></i> Settings</li></a>
                 <li>
                     <form action="/logout" method="post">
                         @csrf

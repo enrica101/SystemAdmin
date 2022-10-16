@@ -26,6 +26,12 @@ Route::get('/map', function () {
     return view('map');
 })->middleware('auth');
 
+
+// View for Settings Page
+Route::get('user/{id}/settings', function (){
+    return view('settings');
+})->middleware('auth');
+
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 //Create new user
