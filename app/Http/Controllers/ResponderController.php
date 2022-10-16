@@ -26,4 +26,16 @@ class ResponderController extends Controller
         
     //     return $responder; // 201 Created
     // }
+
+    // public function updateLocation(Request $request, Responder $responder){
+    //     $locationInputs = $request->validate([
+    //         'id'=> 'required',
+    //         'lat' => 'required',
+    //         'lng' => 'required',
+    //     ]);
+
+        
+
+        
+    // }
 }

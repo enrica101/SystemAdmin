@@ -27,8 +27,9 @@ Route::post('/login', [AuthController::class, 'login']);
 // Request Routes
 Route::get('/requests', [RequestsController::class, 'showRequests']);
 Route::post('/requests/create',[RequestsController::class, 'createDispatchRequest']);
-    
 
+// Responder Route
+Route::post('/responder/location',[ResponderController::class, 'updateLocation']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

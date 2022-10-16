@@ -29,6 +29,7 @@ class User extends Authenticatable
         'birthdate',
         'contactNumber',
         'avatar',
+        'remember_token'
     ];
 
     /**

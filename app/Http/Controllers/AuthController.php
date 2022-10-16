@@ -45,6 +45,7 @@ class AuthController extends Controller
                 'birthdate' => ['required'], //yyyy-mm-dd
                 'contactNumber' => ['nullable', 'regex:/^(09|\+639)\d{9}$/', 'max:13',  Rule::unique('users', 'contactNumber')], // validation for 09 or +639
                 'avatar'  => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'remember_token' => 'nullable'
                 
             ]);
 
@@ -55,7 +56,11 @@ class AuthController extends Controller
                     $formInputs['avatar'] = $request->file('avatar')->store('avatars', 'public');
                 }
         
-            $user = User::create($formInputs);
+            $user = User::create($formInputs, true);
+            $token = $user->createToken('myapptoken')->plainTextToken;
+            $formInputs['remember_token'] = $token;
+            $user->update($formInputs);
+
 
             if($request['accountType'] == 'Responder'){
                 $responderInputs = $request->validate([
@@ -70,7 +75,7 @@ class AuthController extends Controller
 
             $responder = Responder::create($responderInputs);
             } 
-            $token = $user->createToken('myapptoken')->plainTextToken;
+            
         
             if(!empty($responder)){
                 $response = [

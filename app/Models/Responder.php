@@ -12,8 +12,8 @@ class Responder extends Model
     protected $fillable = [
         'userID',
         'field',
-        // 'lat',
-        // 'lng',
+        'lat',
+        'lng',
     ];
 
     public function users(){
