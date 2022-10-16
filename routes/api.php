@@ -30,6 +30,7 @@ Route::post('/requests/create',[RequestsController::class, 'createDispatchReques
 
 // Responder Route
 Route::post('/responder/location',[ResponderController::class, 'updateLocation']);
+Route::post('/responder/response',[ResponderController::class, 'createResponse']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
