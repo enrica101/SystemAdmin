@@ -11,24 +11,6 @@ use App\Models\Requests;
 
 class ResponderController extends Controller
 {
-    // Create New Responder
-    // public function createResponder(Request $request, User $id){
-    //     $formInputs = $request->validate([
-    //         // 'responderID' => 'nullable',
-    //         'userID' => ['required'],
-    //         'field' => ['required'],
-    //         'lat' => ['required'],
-    //         'lng' => ['required'],
-            
-    //     ]);
-
-    //     $responder = Responder::create($formInputs);
-    //     // $formInputs['responderID'] = Controller::generateID('ResponderApp', $responder->id());
-    //     // dd($responder);
-    //     // $responder->update($formInputs);
-        
-    //     return $responder; // 201 Created
-    // }
 
     public function updateLocation(Request $request){
         
@@ -52,24 +34,30 @@ class ResponderController extends Controller
         $formInputs = $request->validate([
             'requestID' => 'required',
             'responderID' => 'required',
+            'status' => 'required'
+        ]);
+
+        $requestInputs = $request->validate([
             'status' => 'required',
         ]);
-        // $formInputs['status'] = 'Responder Found';
+
+        $formInputs['status'] = 'You got a request!';
         $responder = Responder::where('id', $formInputs['responderID'])->first();
         $requestDispatch = Requests::where('id', $formInputs['requestID'])->first();
-        //  == $requestDispatch->get('requestType')
-        // if requestType of request and field of responder is equal then proceed hence abort error 403
-       
+        $requestor = RequestDispatch::where('requestID', $formInputs['requestID'])->first();
+
         if($responder->field == $requestDispatch->requestType){
             $responderResponse = Response::create($formInputs);
+            $requestRow = $requestDispatch->update($requestInputs);
             $response = [
-                'responderResponse' => $responderResponse
+                'userID' => $requestor->id,
+                'responderResponse' => $responderResponse,
             ];
             
             return response($response, 201); 
         }else{
             return response([
-                'message' => 'Request Type and Responder Field does not match'
+                'message' => 'Request Type and Responder Field does not match.'
             ], 401);
         }
     }

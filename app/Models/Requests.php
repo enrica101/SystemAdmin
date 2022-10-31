@@ -18,10 +18,14 @@ class Requests extends Model
     ];
 
     public function requestDispatch(){
-        return $this->hasMany(RequestDispatch::class, 'requestID');
+        return $this->hasMany(RequestDispatch::class, 'id');
     }
 
     public function responses(){
-        return $this->hasMany(Response::class, 'requestID');
+        return $this->hasMany(Response::class, 'id');
+    }
+
+    public function historyRequests(){
+        return $this->hasMany(HistoryRequest::class, 'id');
     }
 }

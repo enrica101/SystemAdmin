@@ -52,12 +52,17 @@ class User extends Authenticatable
     ];
 
     public function requestDispatch(){
-        return $this->hasMany(RequestDispatch::class, 'userID');
+        return $this->hasMany(RequestDispatch::class, 'id');
         
     }
 
     public function responders(){
-        return $this->hasMany(Responder::class, 'userID');
+        return $this->hasMany(Responder::class, 'id');
+        
+    }
+
+    public function historyRequests(){
+        return $this->hasMany(HistoryRequest::class, 'id');
         
     }
 }

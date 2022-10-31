@@ -146,12 +146,12 @@
 
     function initMap(){
         var options = {
-            center: {lat: 10.315724, lng:123.885419},
+            center: {lat: 10.298099450420516, lng:123.88947252856845},
             zoom: 13,
             mapId: 'd1718992514fbee0',
-            disableDefaultUI: true, //removes all default controls from the map
-            zoomControl: true, //displays zoom in and zoom out control on map
-            scaleControl: true // displays scaling measurements on map
+            disableDefaultUI: true, 
+            zoomControl: true, 
+            scaleControl: true 
         }
         map =  new google.maps.Map(document.getElementById('map'), options);
         

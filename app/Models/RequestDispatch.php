@@ -22,10 +22,10 @@ class RequestDispatch extends Model
     ];
 
     public function users(){
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'userID');
     }
 
     public function requests(){
-        return $this->belongsTo(Requests::class, 'id');
+        return $this->belongsTo(Requests::class, 'requestID');
     }
 }

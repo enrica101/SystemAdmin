@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('responses', function (Blueprint $table) {
+        Schema::create('history_requests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('requestID')->references('id')->on('requests');
-            $table->foreignId('responderID')->references('id')->on('responders');
+            $table->foreignId('userID')->references('id')->on('users');
+            $table->foreignId('responderID')->nullable()->references('id')->on('responders');
+            $table->string('requestType');
+            $table->string('lat');
+            $table->string('lng');
             $table->string('status');
             $table->timestamps();
         });
@@ -29,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('responses');
+        Schema::dropIfExists('history_requests');
     }
 };

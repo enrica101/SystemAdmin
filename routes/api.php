@@ -26,7 +26,9 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // Request Routes
 Route::get('/requests', [RequestsController::class, 'showRequests']);
-Route::post('/requests/create',[RequestsController::class, 'createDispatchRequest']);
+Route::get('/requests/available', [RequestsController::class, 'allAvailableRequests']);
+Route::post('/requests/create',[RequestsController::class, 'generateRequest']);
+// yet to be created
 Route::post('/requests/cancel',[RequestsController::class, 'cancelDispatchRequest']);
 Route::post('/requests/update',[RequestsController::class, 'updateRequest']);
 

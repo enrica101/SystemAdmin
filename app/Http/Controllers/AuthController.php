@@ -97,20 +97,33 @@ class AuthController extends Controller
             ]);
 
             $user = User::where('email', $formInputs['email'])->first();
+            if($user['accountType']=='Responder'){
+                $responderDetails = Responder::where('userID', $user['id'])->first();
+                $responderDetails->getAttributes();
 
-            // Check password
-            if(!$user || !Hash::check($formInputs['password'], $user->password)){
-                return response([
-                    'message' => 'Incorrect Credentials'
-                ], 401);
             }
+                // Check password
+                if(!$user || !Hash::check($formInputs['password'], $user->password)){
+                    return response([
+                        'message' => 'Incorrect Credentials'
+                    ], 401);
+                }
 
-            $token = $user->createToken('myapptoken')->plainTextToken;
-            $response = [
-                'user' => $user,
-                'token' => $token
-            ];
-            return response($response, 201);
+                $token = $user->createToken('myapptoken')->plainTextToken;
+                if(!empty($responderDetails)){
+                    $response = [
+                        'user' => $user,
+                        'responder' => $responderDetails,
+                        'token' => $token
+                    ];
+                }else{
+                    $response = [
+                    'user' => $user,
+                    'token' => $token
+                    ];
+                }
+                
+                return response($response, 201);
         }
 
         public function logout() {
