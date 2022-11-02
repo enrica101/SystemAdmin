@@ -28,9 +28,12 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/requests', [RequestsController::class, 'showRequests']);
 Route::get('/requests/available', [RequestsController::class, 'allAvailableRequests']);
 Route::post('/requests/create',[RequestsController::class, 'generateRequest']);
-// yet to be created
-Route::post('/requests/cancel',[RequestsController::class, 'cancelDispatchRequest']);
+//cancelled and completed requests will go through this route below.
+Route::post('/requests/addToArchive',[RequestsController::class, 'archiveDispatchRequest']);
 Route::post('/requests/update',[RequestsController::class, 'updateRequest']);
+Route::post('/requests/profile/history',[RequestsController::class, 'getProfileHistoryRequest']);
+Route::post('/requests/cancel',[RequestsController::class, 'forceCancel']);
+
 
 // Responder Route
 Route::post('/responder/location',[ResponderController::class, 'updateLocation']);

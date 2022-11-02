@@ -11,8 +11,8 @@ class HistoryRequest extends Model
     protected $table = 'history_requests';
     protected $fillable = [
         'requestID',
-        'userID',
-        'responderID',
+        // 'userID',
+        // 'responderID',
         'requestType',
         'lat',
         'lng',

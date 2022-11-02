@@ -34,31 +34,35 @@ class ResponderController extends Controller
         $formInputs = $request->validate([
             'requestID' => 'required',
             'responderID' => 'required',
-            'status' => 'required'
+            'status' => 'nullable'
         ]);
 
         $requestInputs = $request->validate([
-            'status' => 'required',
+            'status' => 'nullable',
         ]);
 
         $formInputs['status'] = 'You got a request!';
+        $requestInputs['status'] = 'Responder Found!';
         $responder = Responder::where('id', $formInputs['responderID'])->first();
         $requestDispatch = Requests::where('id', $formInputs['requestID'])->first();
         $requestor = RequestDispatch::where('requestID', $formInputs['requestID'])->first();
 
-        if($responder->field == $requestDispatch->requestType){
-            $responderResponse = Response::create($formInputs);
-            $requestRow = $requestDispatch->update($requestInputs);
-            $response = [
-                'userID' => $requestor->id,
-                'responderResponse' => $responderResponse,
-            ];
+        if($requestDispatch->status == 'Cancelled' || $requestDispatch->status == 'Completed'){
+            return response(['message' => 'This request is archived.'], 401);
             
-            return response($response, 201); 
         }else{
-            return response([
-                'message' => 'Request Type and Responder Field does not match.'
-            ], 401);
+            if($responder->field == $requestDispatch->requestType){
+                $responderResponse = Response::create($formInputs);
+                $requestRow = $requestDispatch->update($requestInputs);
+                $response = [
+                    'userID' => $requestor->id,
+                    'responderResponse' => $responderResponse,
+                ];
+                
+                return response($response, 201); 
+            }else{
+                return response(['message' => 'Request Type and Responder Field does not match.'], 401);
+            }
         }
     }
 }

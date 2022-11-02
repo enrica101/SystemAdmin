@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('history_requests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('requestID')->references('id')->on('requests');
-            $table->foreignId('userID')->references('id')->on('users');
-            $table->foreignId('responderID')->nullable()->references('id')->on('responders');
+            // $table->foreignId('userID')->references('id')->on('users');
+            // $table->foreignId('responderID')->nullable()->references('id')->on('responders');
             $table->string('requestType');
             $table->string('lat');
             $table->string('lng');
